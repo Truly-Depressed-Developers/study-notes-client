@@ -1,0 +1,22 @@
+{
+	"editor.formatOnSave": true,
+	"editor.tabSize": 4,
+	"editor.indentSize": "tabSize",
+	"editor.detectIndentation": false,
+	"editor.formatOnPaste": true,
+	"files.autoSave": "off",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "vscode.css-language-features",
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[javascript][typescript][typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	}
+}
