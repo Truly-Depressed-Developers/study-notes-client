@@ -1,15 +1,25 @@
-import { Button } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material';
 import './App.scss';
+
+import { ThemeProvider, createTheme } from '@mui/material';
+import { Routes } from 'react-router';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+import { Home } from './pages/Home/Home';
+import { NotFound } from './pages/NotFound/NotFound';
 
 function Inside() {
     return (
         <div className="App">
-            <Button
-                variant="contained"
-            >
-                Text
-            </Button>
+            <nav>
+                <Link to="/">Home</Link>
+                <Link to="/random">Random</Link>
+            </nav>
+
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='*' element={<NotFound />} />
+            </Routes>
+
         </div>
     )
 }
@@ -20,7 +30,9 @@ const theme = createTheme();
 function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Inside />
+            <BrowserRouter>
+                <Inside />
+            </BrowserRouter>
         </ThemeProvider >
     );
 }
