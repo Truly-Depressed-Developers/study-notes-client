@@ -1,3 +1,4 @@
+import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
@@ -10,8 +11,19 @@ const Login = (props: Props): JSX.Element => {
 	const navigate = useNavigate();
 	const [username, setLogin] = useState("");
 	const [password, setPassword] = useState("");
+	const [logError, setLogError] = useState(false);
+	const [miscError, setMiscError] = useState(false);
+	const [noDataError, setNoDataError] = useState(false);
+
+	const resetErrors = () => {
+		setLogError(false);
+		setMiscError(false);
+		setNoDataError(false);
+	}
 
 	const submitForm = () => {
+		resetErrors();
+
 		if (username !== "" && password !== "") {
 			fetch('http://10.200.2.96/login', {
 				method: 'POST',
@@ -30,14 +42,15 @@ const Login = (props: Props): JSX.Element => {
 					} else {
 						setLogin("");
 						setPassword("");
-						alert("Incorrect login or password!");
+						setLogError(true);
 					}
 				})
 				.catch((error) => {
+					setMiscError(true);
 					console.error('Error:', error);
 				});
 		} else {
-			alert("Provide input data!");
+			setNoDataError(true);
 		}
 	};
 
@@ -61,6 +74,18 @@ const Login = (props: Props): JSX.Element => {
 				autoComplete="off"
 				variant="standard"
 			/>
+			{logError ? <Alert
+				severity="error"
+				className="error-message"
+			>Incorrect login or password!</Alert> : ""}
+			{miscError ? <Alert
+				severity="error"
+				className="error-message"
+			>Unexpected error occured</Alert> : ""}
+			{noDataError ? <Alert
+				severity="warning"
+				className="error-message"
+			>Please provide input data!</Alert> : ""}
 			<Button
 				variant="contained"
 				onClick={() => submitForm()}
