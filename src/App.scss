@@ -11,7 +11,6 @@
 
     #logo,
     #user-stuff {
-        background-color: #F0F0F0;
         width: $logo_width;
         height: 100%;
         display: flex;
@@ -21,6 +20,18 @@
         * {
             text-decoration: none;
         }
+
+        .username {
+            margin-top: -4px;
+            margin-left: 16px;
+            font-size: 1.125rem;
+        }
+    }
+
+    #user-stuff {
+        justify-content: flex-end;
+        padding-right: 24px;
+        width: fit-content;
     }
 
     #logo {

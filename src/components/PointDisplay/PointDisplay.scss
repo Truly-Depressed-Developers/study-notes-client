@@ -1,0 +1,15 @@
+.point-display {
+    // background-color: red;
+    display: flex;
+    align-items: center;
+
+    &>svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    &>span {
+        margin-left: 4px;
+        font-size: 0.875rem;
+    }
+}
