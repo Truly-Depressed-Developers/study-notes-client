@@ -1,7 +1,9 @@
 .note-singular {
     margin: 0 auto;
+    height: fit-content;
 
     .pdf {
+        z-index: -1;
         margin-top: 16px;
         box-shadow: 0 0 6px 1px lightgray;
         border-radius: 6px;

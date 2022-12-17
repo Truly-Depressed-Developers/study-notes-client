@@ -60,6 +60,7 @@ const NoteSingular = (props: Props): JSX.Element => {
                     upvotes={note.upvotes}
                     author={note.author}
                     category={note.category}
+                    scrollable={true}
                 />
 
                 <Document

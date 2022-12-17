@@ -8,9 +8,9 @@ import { dateToHumanReadable } from "../../helpers/dateFormat";
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-type Props = NoteInfo;
+type Props = NoteInfo & { scrollable?: boolean };
 
 const Note = (props: Props): JSX.Element => {
     const navigate = useNavigate();
@@ -19,10 +19,12 @@ const Note = (props: Props): JSX.Element => {
         navigate(`./${props.noteId}`);
     }, [navigate, props.noteId]);
 
+    const IconToDisplay = () => props.scrollable ? KeyboardArrowUpIcon : ArrowForwardIosIcon;
+
     return (
         <ButtonBase
-            className="note"
-            onClick={() => onNoteClick()}
+            className={"note" + (props.scrollable ? " scrollable" : "")}
+            onClick={props.scrollable ? () => window.scroll(0, 0) : () => onNoteClick()}
         >
             <Card className="note-content">
                 <div className="note-text">
@@ -48,7 +50,7 @@ const Note = (props: Props): JSX.Element => {
                     />
                     <Typography>{props.upvotes}</Typography>
                     <Icon
-                        component={ArrowForwardIosIcon}
+                        component={IconToDisplay()}
                         color="primary"
                     />
                 </div>
