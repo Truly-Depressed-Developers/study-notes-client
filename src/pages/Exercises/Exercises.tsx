@@ -3,6 +3,7 @@ import { Exercise } from "../../components/Exercise/Exercise";
 import { ExerciseInfo } from "../../types/ExerciseInfo";
 import "./Exercises.scss";
 import config from "../../config";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 type Props = {}
 
@@ -101,31 +102,58 @@ const Exercises = (props: Props): JSX.Element => {
     return (
         <div id="exercises">
             <div id="search">
-                <select name="uni" id="uni-select" value={uni} onChange={(e) => setUni(parseInt(e.target.value))}>
-                    <option value={-1}></option>
-                    {
-                        uniList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
-                        })
-                    }
-                </select>
-                <select name="course" id="course-select" value={course} onChange={(e) => setCourse(parseInt(e.target.value))}>
-                    <option value={-1}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-                    {
-                        courseList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
-                        })
-                    }
-                </select>
-                <select name="subject" id="subject-select" value={subject} onChange={(e) => setSubject(parseInt(e.target.value))}>
-                    <option value={-1}></option>
+                <FormControl fullWidth>
+                    <InputLabel id="university-select">University</InputLabel>
+                    <Select
+                        labelId="university-select"
+                        id="demo-simple-select"
+                        value={uni}
+                        label="University"
+                        onChange={(e) => setUni(parseInt(e.target.value as string))}
+                    >
+                        <MenuItem value={-1}>All</MenuItem>
+                        {
+                            uniList.map((e) => {
+                                return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
+                            })
+                        }
+                    </Select>
+                </FormControl>
+                <FormControl fullWidth disabled={uni == -1}>
+                    <InputLabel id="course-select">Course</InputLabel>
+                    <Select
+                        labelId="course-select"
+                        id="demo-simple-select"
+                        value={course}
+                        label="Course"
+                        onChange={(e) => setCourse(parseInt(e.target.value as string))}
+                    >
+                        <MenuItem value={-1}>All</MenuItem>
+                        {
+                            courseList.map((e) => {
+                                return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
+                            })
+                        }
+                    </Select>
+                </FormControl>
 
-                    {
-                        subjectList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
-                        })
-                    }
-                </select>
+                <FormControl fullWidth>
+                    <InputLabel id="course-select">Subject</InputLabel>
+                    <Select
+                        labelId="subject-select"
+                        id="demo-simple-select"
+                        value={subject}
+                        label="Subject"
+                        onChange={(e) => setSubject(parseInt(e.target.value as string))}
+                    >
+                        <MenuItem value={-1}>All</MenuItem>
+                        {
+                            subjectList.map((e) => {
+                                return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
+                            })
+                        }
+                    </Select>
+                </FormControl>
             </div>
             <div id="tiles">
                 {exercises.map(n =>
