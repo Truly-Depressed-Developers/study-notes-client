@@ -4,4 +4,5 @@ export type NoteInfo = {
     university: string,
     degreeCourse: string,
     dateAdded: number,
+    upvotes: number,
 }
