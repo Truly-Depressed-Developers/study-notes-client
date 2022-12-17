@@ -10,6 +10,7 @@ import { Notes } from './pages/Notes/Notes';
 import { Registration } from './pages/Registration/Registration';
 import { Login } from './pages/Login/Login';
 import { NoteSingular } from './pages/NoteSingular/NoteSingular';
+import { Exercises } from './pages/Exercises/Exercises';
 
 function Inside() {
 	return (
@@ -19,7 +20,7 @@ function Inside() {
 				<div id="menu-items">
 					<Link to="/">Home</Link>
 					<Link to="/notes">Notes</Link>
-					<Link to="/random">Random</Link>
+					<Link to="/exercises">Exercises</Link>
 				</div>
 				<div id="user-stuff">
 					<Link to="/login">Login</Link>
@@ -30,6 +31,7 @@ function Inside() {
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/notes' element={<Notes />} />
+					<Route path='/exercises' element={<Exercises />} />
 					<Route path='/notes/:id' element={<NoteSingular />} />
 					<Route path='/registration' element={<Registration />} />
 					<Route path='/login' element={<Login />} />
