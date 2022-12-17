@@ -17,7 +17,7 @@ function Inside() {
                 <Link to="/">Home</Link>
                 <Link to="/notes">Notes</Link>
                 <Link to="/login">Login</Link>
-				        <Link to="/registration">Registration</Link>
+                <Link to="/registration">Registration</Link>
                 <Link to="/random">Random</Link>
             </nav>
 
@@ -25,7 +25,7 @@ function Inside() {
                 <Route path='/' element={<Home />} />
                 <Route path='/notes' element={<Notes />} />
                 <Route path='/registration' element={<Registration />} />
-				         <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Login />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
 
@@ -37,13 +37,13 @@ const theme = createTheme();
 
 // Providers
 function App() {
-	return (
-		<ThemeProvider theme={theme}>
-			<BrowserRouter>
-				<Inside />
-			</BrowserRouter>
-		</ThemeProvider >
-	);
+    return (
+        <ThemeProvider theme={theme}>
+            <BrowserRouter>
+                <Inside />
+            </BrowserRouter>
+        </ThemeProvider >
+    );
 }
 
 export default App;
