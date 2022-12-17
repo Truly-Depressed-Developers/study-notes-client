@@ -1,6 +1,6 @@
 import { NoteInfo } from "./NoteInfo";
 
 export type NoteInfoExtended = NoteInfo & {
-    contentPreview: string,
+    contentURL: string,
     description: string
 }

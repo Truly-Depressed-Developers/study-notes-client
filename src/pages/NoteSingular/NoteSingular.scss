@@ -1,3 +1,13 @@
 .note-singular {
-    left: 0;
+    margin: 0 auto;
+
+    .pdf {
+        margin-top: 16px;
+        box-shadow: 0 0 6px 1px lightgray;
+        border-radius: 6px;
+    }
+
+    .spacer {
+        height: 48px;
+    }
 }

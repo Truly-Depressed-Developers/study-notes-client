@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import { Card, CardContent, Typography, ButtonBase } from "@mui/material";
 import { NoteInfoExtended } from "../../types/NoteInfoExtended";
 import { dateToHumanReadable } from "../../helpers/dateFormat";
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
+import { useState } from "react";
+import { Note } from "../../components/Note/Note";
 
 type Props = {}
 
@@ -14,7 +17,7 @@ const _resolver: { [id: number]: NoteInfoExtended } = {
         dateAdded: Date.now(),
         university: "AGH",
         degreeCourse: "ISI",
-        contentPreview: "https://staticsmaker.iplsc.com/smaker_prod_2021_10_27/18033c10dac131a99f31b3ba5f62ee01-recipe_main.jpg",
+        contentURL: "/media/pdf/skrypt v0.5.pdf",
         upvotes: 69,
         author: "Your mom",
         category: "Matematyka",
@@ -26,7 +29,7 @@ const _resolver: { [id: number]: NoteInfoExtended } = {
         dateAdded: Date.now(),
         university: "AGH",
         degreeCourse: "ISI",
-        contentPreview: "https://staticsmaker.iplsc.com/smaker_production_2022_11_18/f295a8db401011c6102d753062e97d91-recipe_main.jpg",
+        contentURL: "/media/pdf/W14.pdf",
         upvotes: 420,
         author: "Bogdan Ćmiel",
         category: "Matematyka",
@@ -39,6 +42,8 @@ const NoteSingular = (props: Props): JSX.Element => {
 
     const note = id !== undefined ? _resolver[parseInt(id)] : undefined;
 
+    const [numPages, setNumPages] = useState(0);
+
     return (
         note === undefined ?
             <Typography variant="h4">
@@ -46,13 +51,34 @@ const NoteSingular = (props: Props): JSX.Element => {
             </Typography>
             :
             <div className="note-singular">
-                <Typography>Dodano: {dateToHumanReadable(new Date(note.dateAdded))}</Typography>
-                <Typography>{note.university} - {note.degreeCourse}</Typography>
-                <Typography variant="h2">{note.upvotes} {note.title}</Typography>
-                <Typography>
-                    <img src={note.contentPreview} alt="cover" />
-                </Typography>
-                <Typography variant="body1">{note.description}</Typography>
+                <Note
+                    noteId={note.noteId}
+                    title={note.title}
+                    university={note.university}
+                    degreeCourse={note.degreeCourse}
+                    dateAdded={note.dateAdded}
+                    upvotes={note.upvotes}
+                    author={note.author}
+                    category={note.category}
+                />
+
+                <Document
+                    className="pdf"
+                    file={note.contentURL}
+                    onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                >
+                    {Array(numPages).fill(null).map((_, i) => {
+                        return (<Page
+                            key={i}
+                            pageNumber={i + 1}
+                            renderAnnotationLayer={false}
+                            renderTextLayer={false}
+                        />)
+                    }
+                    )}
+                </Document>
+
+                <div className="spacer"></div>
             </div>
     );
 }
