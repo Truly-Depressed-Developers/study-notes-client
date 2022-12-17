@@ -14,11 +14,12 @@ const Home = (props: Props): JSX.Element => {
                     Sheep Your Hack 4
                 </Typography>
 
-                {/* <Typography
+                <Typography
                     variant="subtitle1"
+                    id="subtitle"
                 >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, voluptate?
-                </Typography> */}
+                    2022
+                </Typography>
             </div>
         </div>
     );
