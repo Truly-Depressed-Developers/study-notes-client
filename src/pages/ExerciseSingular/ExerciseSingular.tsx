@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 // import { Exercise } from "../../components/Exercise/Exercise";
 import { Exercise } from "../../components/Exercise/Exercise";
 import config from "../../config";
+import { ExerciseTop } from "../../components/ExerciseTop/ExerciseTop";
 
 type Props = {}
 
@@ -48,8 +49,18 @@ const ExerciseSingular = (props: Props): JSX.Element => {
             </Typography>
             :
             <div className="exercise-singular">
-                <
-                <div className="spacer"></div>
+                <ExerciseTop
+                    id={exercise.id}
+                    username={exercise.username}
+                    university={exercise.university}
+                    degree_course={exercise.degree_course}
+                    subject={exercise.subject}
+                    title={exercise.title}
+                    content={exercise.content}
+                    points={exercise.points}
+                    exercise_set={exercise.exercise_set}
+                    timestamp={exercise.timestamp}
+                />
             </div >
     );
 }

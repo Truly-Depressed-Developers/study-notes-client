@@ -17,6 +17,9 @@ import { ExerciseSingular } from './pages/ExerciseSingular/ExerciseSingular';
 import { AddNote } from './pages/AddNote/AddNote';
 
 function Inside() {
+    const [userId, setUserId] = useState(-1);
+    const [username, setUsername] = useState("");
+
     return (
         <div className="App">
             <nav id="navigation">
@@ -39,7 +42,7 @@ function Inside() {
                     <Route path='/exercises/:id' element={<ExerciseSingular />} />
                     <Route path='/notes/:id' element={<NoteSingular />} />
                     <Route path='/registration' element={<Registration />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={<Login onLogin={(userId, username) => { setUserId(userId); setUsername(username) }} />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>
