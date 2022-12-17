@@ -1,0 +1,10 @@
+.point-display {
+    // background-color: red;
+    display: flex;
+    align-items: center;
+
+    &>span {
+        margin-left: 4px;
+        font-size: 1.125rem;
+    }
+}
