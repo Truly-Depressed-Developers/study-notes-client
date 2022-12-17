@@ -53,7 +53,7 @@ function Inside() {
                     <Route path='/exercises' element={<Exercises />} />
                     <Route path='/exercises/:id' element={<ExerciseSingular />} />
                     <Route path='/notes/:id' element={<NoteSingular />} />
-                    <Route path='/addNote' element={<AddNote />} />
+                    <Route path='/addNote' element={<AddNote userId={userId} />} />
                     <Route path='/registration' element={<Registration />} />
                     <Route path='/login' element={<Login onLogin={(userId, username) => { setUserId(userId); setUsername(username) }} />} />
                     <Route path='*' element={<NotFound />} />

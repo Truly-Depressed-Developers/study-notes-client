@@ -2,13 +2,13 @@ import "./AddNote.scss";
 
 import { EditableNote } from "../../components/EditableNote/EditableNote";
 
-type Props = {}
+type Props = { userId: number }
 
 const AddNote = (props: Props): JSX.Element => {
     return (
         <div className="note-singular">
             <div className="spacer"></div>
-            <EditableNote />
+            <EditableNote userId={props.userId} />
             <div className="spacer"></div>
         </div>
     );

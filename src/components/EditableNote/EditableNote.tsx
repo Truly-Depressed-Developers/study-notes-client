@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import config from "../../config";
 
-type Props = {};
+type Props = { userId: number };
 
 type General = {
     id: number,
@@ -85,7 +85,7 @@ const EditableNote = (props: Props): JSX.Element => {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    "id_author": "3",
+                    "id_author": props.userId.toString(),
                     "id_degree_course": course.toString(),
                     "id_subject": subject.toString(),
                     "title": title,
