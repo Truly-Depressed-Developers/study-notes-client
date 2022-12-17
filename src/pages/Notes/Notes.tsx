@@ -12,7 +12,9 @@ const notes: NoteInfo[] = [
         dateAdded: Date.now(),
         university: "AGH",
         degreeCourse: "ISI",
-        upvotes: 69
+        upvotes: 69,
+        author: "Your mom",
+        category: "Matematyka"
     },
     {
         noteId: 4202137,
@@ -20,7 +22,9 @@ const notes: NoteInfo[] = [
         dateAdded: Date.now(),
         university: "AGH",
         degreeCourse: "ISI",
-        upvotes: 420
+        upvotes: 420,
+        author: "Bogdan Ćmiel",
+        category: "Matematyka"
     }
 ];
 
@@ -115,6 +119,8 @@ const Notes = (props: Props): JSX.Element => {
                         university={n.university}
                         degreeCourse={n.degreeCourse}
                         upvotes={n.upvotes}
+                        author={n.author}
+                        category={n.category}
                     />
                 )}
             </div>

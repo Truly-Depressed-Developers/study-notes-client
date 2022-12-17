@@ -5,4 +5,6 @@ export type NoteInfo = {
     degreeCourse: string,
     dateAdded: number,
     upvotes: number,
+    author: string,
+    category: string
 }
