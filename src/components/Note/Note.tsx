@@ -1,10 +1,14 @@
 import "./Note.scss";
 
 import { NoteInfo } from "../../types/NoteInfo";
-import { Card, Typography, ButtonBase } from "@mui/material";
+import { Card, Typography, ButtonBase, Icon } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 import { dateToHumanReadable } from "../../helpers/dateFormat";
+
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 type Props = NoteInfo;
 
@@ -21,18 +25,32 @@ const Note = (props: Props): JSX.Element => {
             onClick={() => onNoteClick()}
         >
             <Card className="note-content">
-                <div>
-                    <Typography component="div">
-                        {dateToHumanReadable(new Date(props.dateAdded))},
-                        &nbsp;
-                        Kategoria,
-                        &nbsp;
-                        {props.university} - {props.degreeCourse}
-                    </Typography>
+                <div className="note-text">
+                    <div>
+                        <Typography>{props.university}</Typography>
+                        <Typography>&#x2022;</Typography>
+                        <Typography>{props.degreeCourse}</Typography>
+                        <Typography>&#x2022;</Typography>
+                        <Typography>{props.category}</Typography>
+                    </div>
+                    <div>
+                        <Typography>{props.title}</Typography>
+                    </div>
+                    <div>
+                        <Typography color="GrayText">{dateToHumanReadable(new Date(props.dateAdded))}</Typography>
+                        <Typography color="GrayText">{props.author}</Typography>
+                    </div>
                 </div>
-                <div>
-                    <Typography variant="h4" component="div">{props.upvotes}</Typography>
-                    <Typography variant="h4">{props.title}</Typography>
+                <div className="note-likes">
+                    <Icon
+                        component={FavoriteIcon}
+                        color="warning"
+                    />
+                    <Typography>{props.upvotes}</Typography>
+                    <Icon
+                        component={ArrowForwardIosIcon}
+                        color="primary"
+                    />
                 </div>
             </Card>
         </ButtonBase>
