@@ -1,13 +1,17 @@
 @import "./variables";
 
 #navigation {
-    padding-left: 24px;
+    padding-left: 36px;
     padding-right: 12px;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     height: $header_height;
+
+    #logo {
+        transform: scale(1.2);
+    }
 
     #logo,
     #user-stuff {
