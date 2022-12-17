@@ -29,16 +29,16 @@ const Login = (props: Props): JSX.Element => {
 			fetch(`http://${config.ip}/login`, {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
+					'Content-Type': 'application/x-www-form-urlencoded',
 				},
-				body: JSON.stringify({
-					login: username,
-					password: password
+				body: new URLSearchParams({
+					"username": username,
+					"password": password
 				}),
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					if (data.password_correct) {
+					if (data.description === "Logowanie powiodło się") {
 						navigate("/");
 					} else {
 						setLogin("");

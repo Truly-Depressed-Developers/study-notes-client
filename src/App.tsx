@@ -19,9 +19,11 @@ function Inside() {
 				<div id="menu-items">
 					<Link to="/">Home</Link>
 					<Link to="/notes">Notes</Link>
+					<Link to="/random">Random</Link>
+				</div>
+				<div id="user-stuff">
 					<Link to="/login">Login</Link>
 					<Link to="/registration">Registration</Link>
-					<Link to="/random">Random</Link>
 				</div>
 			</nav>
 			<div id="routes">
