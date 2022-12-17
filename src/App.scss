@@ -1,57 +1,58 @@
 @import "./variables";
 
 #navigation {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: $header_height;
-	position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $header_height;
+    position: fixed;
+    z-index: 1000;
 
-	#logo,
-	#user-stuff {
-		background-color: #F0F0F0;
-		width: $logo_width;
-		height: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
+    #logo,
+    #user-stuff {
+        background-color: #F0F0F0;
+        width: $logo_width;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
 
-		* {
-			text-decoration: none;
-		}
-	}
+        * {
+            text-decoration: none;
+        }
+    }
 
-	#logo {
-		background-image: url("https://media.discordapp.net/attachments/692090830806319135/1053583418895634432/Frame_21_1.png");
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-	}
+    #logo {
+        background-image: url("https://media.discordapp.net/attachments/692090830806319135/1053583418895634432/Frame_21_1.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 
-	#menu-items {
-		display: flex;
-		flex-grow: 1;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		// background-color: lime;
+    #menu-items {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        // background-color: lime;
 
-		* {
-			text-decoration: none;
-			background-color: #F0F0F0;
-			height: 100%;
-			width: calc(100% / $menu_items_count);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
+        * {
+            text-decoration: none;
+            background-color: #F0F0F0;
+            height: 100%;
+            width: calc(100% / $menu_items_count);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
 
 #routes {
-	width: 100%;
-	height: calc(100vh - $header_height);
-	padding-top: $header_height;
-	display: flex;
+    width: 100%;
+    height: calc(100vh - $header_height);
+    padding-top: $header_height;
+    display: flex;
 }
