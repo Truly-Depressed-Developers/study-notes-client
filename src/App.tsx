@@ -12,6 +12,8 @@ import { Login } from './pages/Login/Login';
 import { NoteSingular } from './pages/NoteSingular/NoteSingular';
 import { useState } from 'react';
 import { PointDisplay } from './components/PointDisplay/PointDisplay';
+import { Exercises } from './pages/Exercises/Exercises';
+import { AddNote } from './pages/AddNote/AddNote';
 
 function Inside() {
     const [userId, setUserId] = useState(-1);
@@ -40,6 +42,11 @@ function Inside() {
                         </>
                     }
 
+                    <Link to="/exercises">Exercises</Link>
+                </div>
+                <div id="user-stuff">
+                    <Link to="/login">Login</Link>
+                    <Link to="/registration">Registration</Link>
                 </div>
             </nav>
             <div id="routes">
@@ -49,6 +56,8 @@ function Inside() {
                     <Route path='/notes/:id' element={<NoteSingular />} />
                     <Route path='/registration' element={<Registration />} />
                     <Route path='/login' element={<Login onLogin={(userId, username) => { setUserId(userId); setUsername(username) }} />} />
+                    <Route path='/exercises' element={<Exercises />} />
+                    <Route path='/addNote' element={<AddNote />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>

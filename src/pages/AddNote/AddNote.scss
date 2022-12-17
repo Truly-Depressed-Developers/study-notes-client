@@ -1,0 +1,24 @@
+@import "../../variables";
+
+.note-singular {
+    margin: 0 auto;
+    height: fit-content;
+
+    .pdf {
+        z-index: -1;
+        margin-top: 16px;
+        box-shadow: 0 0 6px 1px lightgray;
+        border-radius: 6px;
+    }
+
+    .spacer {
+        height: 48px;
+    }
+}
+
+#search {
+    height: $search_height;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

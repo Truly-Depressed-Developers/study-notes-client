@@ -7,6 +7,7 @@
     align-items: center;
     height: $header_height;
     position: fixed;
+    z-index: 1000;
 
     #logo,
     #user-stuff {
@@ -34,7 +35,7 @@
     }
 
     #logo {
-        background-image: url("https://ih1.redbubble.net/image.671960572.1880/pp,840x830-pad,1000x1000,f8f8f8.u4.jpg");
+        background-image: url("https://media.discordapp.net/attachments/692090830806319135/1053583418895634432/Frame_21_1.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

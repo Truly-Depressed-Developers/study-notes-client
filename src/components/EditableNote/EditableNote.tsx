@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
-import { Note } from "../../components/Note/Note";
-import { NoteInfo } from "../../types/NoteInfo";
-import "./Notes.scss";
-import config from "../../config";
-import { Button } from "@mui/material";
-import { Navigate, useNavigate } from "react-router-dom";
+import "./EditableNote.scss";
 
-type Props = {}
+import { TextField, Button, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import config from "../../config";
+
+type Props = {};
 
 type General = {
     id: number,
     name: string
 }
 
-const Notes = (props: Props): JSX.Element => {
+const EditableNote = (props: Props): JSX.Element => {
     const navigate = useNavigate();
     const [uni, setUni] = useState<number>(-1);
     const [course, setCourse] = useState<number>(-1);
@@ -21,7 +20,9 @@ const Notes = (props: Props): JSX.Element => {
     const [uniList, setUniList] = useState<General[]>([]);
     const [courseList, setCourseList] = useState<General[]>([]);
     const [subjectList, setSubjectList] = useState<General[]>([]);
-    const [notes, setNotes] = useState<NoteInfo[]>([]);
+    const [title, setTitle] = useState("");
+    const [url, setUrl] = useState("");
+    const [noDataError, setNoDataError] = useState(false);
 
     const getUnis = () => {
         fetch(`http://${config.ip}/get_universities`, {
@@ -69,41 +70,47 @@ const Notes = (props: Props): JSX.Element => {
             });
     }
 
-    const getNotes = () => {
-        var formData = new FormData();
-        formData.append("uni", uni.toString());
-        formData.append("course", course.toString())
-        formData.append("subject", subject.toString())
-
-        fetch(`http://${config.ip}/get_notes`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: new URLSearchParams({
-                "id_university": uni.toString(),
-                "id_degree_course": course.toString(),
-                "id_subject": subject.toString()
-            })
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-
-                setNotes(data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
-
     useEffect(getSubjects, [])
     useEffect(getUnis, [])
     useEffect(getCourses, [uni])
-    useEffect(getNotes, [uni, course, subject])
+
+
+    const submitForm = () => {
+        setNoDataError(false);
+
+        if (title !== "" && url !== "" && course !== 0 && subject !== 0) {
+            fetch(`http://${config.ip}/add_note`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    "id_author": "3",
+                    "id_degree_course": course.toString(),
+                    "id_subject": subject.toString(),
+                    "title": title,
+                    "url": url,
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    if (data.status === true) {
+                        navigate("/notes");
+                    } else {
+                        console.log("Nie udało się dodać notatki")
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        } else {
+            setNoDataError(true);
+        }
+    }
 
     return (
-        <div id="notes">
+        <div>
             <div id="search">
                 <select name="uni" id="uni-select" value={uni} onChange={(e) => setUni(parseInt(e.target.value))}>
                     <option value={-1}></option>
@@ -131,27 +138,30 @@ const Notes = (props: Props): JSX.Element => {
                     }
                 </select>
             </div>
+            <TextField
+                id="title-input"
+                label="Title"
+                variant="outlined"
+                value={title}
+                onChange={(l) => setTitle(l.target.value)}
+            />
+            <TextField
+                id="url-input"
+                label="Url"
+                variant="outlined"
+                value={url}
+                onChange={(l) => setUrl(l.target.value)}
+            />
+            {noDataError ? <Alert
+                severity="warning"
+                className="error-message"
+            >Please provide input data!</Alert> : ""}
             <Button
                 variant="contained"
-                onClick={() => navigate("/addNote")}
-            >Add Note</Button>
-            <div id="tiles">
-                {notes.map(n =>
-                    <Note
-                        key={n.id}
-                        id={n.id}
-                        title={n.title}
-                        timestamp={n.timestamp}
-                        university={n.university}
-                        degree_course={n.degree_course}
-                        upvotes={n.upvotes}
-                        username={n.username}
-                        subject={n.subject}
-                    />
-                )}
-            </div>
+                onClick={() => submitForm()}
+            >Add note</Button>
         </div>
     );
 }
 
-export { Notes };
+export { EditableNote };
