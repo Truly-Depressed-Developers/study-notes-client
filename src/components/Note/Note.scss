@@ -1,5 +1,26 @@
 .note {
-    width: fit-content;
+    width: 100%;
     height: fit-content;
-    cursor: pointer;
+
+    .note-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        div:nth-child(1) {
+            display: flex;
+
+            div:nth-child(1) {
+                margin-right: 24px;
+            }
+        }
+
+        div:nth-child(2) {
+            display: flex;
+
+            div:nth-child(1) {
+                margin-right: 24px;
+            }
+        }
+    }
 }

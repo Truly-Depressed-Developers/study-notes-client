@@ -10,14 +10,16 @@ const notes: NoteInfo[] = [
         title: "Algebra liniowa",
         dateAdded: Date.now(),
         university: "AGH",
-        degreeCourse: "ISI"
+        degreeCourse: "ISI",
+        upvotes: 69
     },
     {
         noteId: 4202137,
         title: "Analiza matematyczna 1",
         dateAdded: Date.now(),
         university: "AGH",
-        degreeCourse: "ISI"
+        degreeCourse: "ISI",
+        upvotes: 420
     }
 ];
 
@@ -32,6 +34,7 @@ const Notes = (props: Props): JSX.Element => {
                     dateAdded={n.dateAdded}
                     university={n.university}
                     degreeCourse={n.degreeCourse}
+                    upvotes={n.upvotes}
                 />
             )}
         </div>
