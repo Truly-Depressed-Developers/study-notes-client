@@ -160,11 +160,6 @@ const Notes = (props: Props): JSX.Element => {
                         </Select>
                     </FormControl>
                 </div>
-                {/* <Button
-                className="add-note-button"
-                variant="contained"
-                onClick={() => navigate("/addNote")}
-            >Add Note</Button> */}
                 <Fab color="primary" aria-label="add" className="fab-button" onClick={() => navigate("/addNote")}>
                     <AddIcon />
                 </Fab>
