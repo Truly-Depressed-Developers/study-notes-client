@@ -1,3 +1,5 @@
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import "./Registration.scss"
 
@@ -33,13 +35,28 @@ const Registration = (props: Props): JSX.Element => {
 
 	return (
 		<div id="register">
-			<p>Register:</p>
-			<label htmlFor="login">Login field:</label>
-			<input type="text" name="login" value={username} onChange={(l) => setLogin(l.target.value)} />
-			<label htmlFor="password">Password field:</label>
-			<input type="password" name="password" value={password} onChange={(p) => setPassword(p.target.value)} />
-
-			<button id="register-button" onClick={() => submitForm()}>Register</button>
+			<TextField
+				required
+				id="standard-required"
+				label="Username"
+				value={username}
+				onChange={(l) => setLogin(l.target.value)}
+				variant="standard"
+			/>
+			<TextField
+				required
+				id="standard-password-input"
+				label="Password"
+				type="password"
+				value={password}
+				onChange={(p) => setPassword(p.target.value)}
+				autoComplete="off"
+				variant="standard"
+			/>
+			<Button
+				variant="contained"
+				onClick={() => submitForm()}
+			>Sign up!</Button>
 		</div>
 	);
 }

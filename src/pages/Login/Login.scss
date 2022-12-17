@@ -1,0 +1,19 @@
+#login {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 50px;
+
+	* {
+		cursor: pointer;
+	}
+
+	input {
+		margin-top: 15px;
+	}
+
+	button {
+		margin-top: 20px;
+	}
+}
