@@ -9,10 +9,10 @@
     // background-color: orange;
     margin: 0 auto;
     height: max-content;
-    margin-top: 60px;
+    // margin-top: 60px;
     margin-bottom: 60px;
     border-radius: 20px;
-    box-shadow: 5px 5px 15px black;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 
     #search {
         height: $search_height;

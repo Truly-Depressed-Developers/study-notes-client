@@ -5,22 +5,23 @@
 }
 
 #navigation {
-    padding-left: 36px;
-    padding-right: 12px;
-    // width: 100vw;
-    max-width: calc(100vw - 17px);
+    max-width: 100vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: $header_height;
 
     #logo {
-        transform: scale(1.2);
+        background-image: url("https://media.discordapp.net/attachments/692090830806319135/1053583418895634432/Frame_21_1.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: scale(1.1) translateX(10px);
     }
 
     #logo,
     #user-stuff {
-        width: $logo_width;
+        width: 240px;
         height: 100%;
         display: flex;
         justify-content: space-around;
@@ -39,8 +40,7 @@
 
     #user-stuff {
         justify-content: flex-end;
-        padding-right: 24px;
-        width: fit-content;
+        transform: translateX(-17px);
 
         .registration {
             display: flex;
@@ -81,28 +81,21 @@
         }
     }
 
-    #logo {
-        background-image: url("https://media.discordapp.net/attachments/692090830806319135/1053583418895634432/Frame_21_1.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
     #menu-items {
-        border-radius: 0 8px 8px 0;
+        border-radius: 0 0 8px 8px;
         display: flex;
-        flex-grow: 1;
-        justify-content: center;
+        width: 500px;
+        justify-content: space-around;
         align-items: center;
         height: 100%;
         font-size: 1.2rem;
-        width: fit-content;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 
         * {
             text-decoration: none;
             background-color: #F0F0F0;
             height: 100%;
-            width: calc(80% / $menu_items_count);
+            width: 80%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -113,19 +106,18 @@
             }
 
             &:first-child {
-                border-bottom-left-radius: 12px;
+                border-bottom-left-radius: 8px;
             }
 
             &:last-child {
-                border-bottom-right-radius: 12px;
+                border-bottom-right-radius: 8px;
             }
         }
     }
 }
 
 #routes {
-    // width: 100%;
     max-width: calc(100vw - 17px);
-    // padding-top: $header_height;
+    margin-top: 50px;
     display: flex;
 }
