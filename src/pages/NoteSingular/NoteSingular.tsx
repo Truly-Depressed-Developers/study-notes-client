@@ -5,19 +5,37 @@ import { Card, CardContent, Typography, ButtonBase } from "@mui/material";
 import { NoteInfoExtended } from "../../types/NoteInfoExtended";
 import { dateToHumanReadable } from "../../helpers/dateFormat";
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Note } from "../../components/Note/Note";
+import config from "../../config";
 
 type Props = {}
-
-const _resolver: { [id: number]: NoteInfoExtended } = {};
 
 const NoteSingular = (props: Props): JSX.Element => {
     const { id } = useParams();
 
-    const note = id !== undefined ? _resolver[parseInt(id)] : undefined;
+    const [note, setNote] = useState<NoteInfoExtended>();
 
     const [numPages, setNumPages] = useState(0);
+
+    useEffect(() => {
+        fetch(`http://${config.ip}/get_one_note`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                id: id?.toString() || ""
+            })
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                setNote(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [id]);
 
     return (
         note === undefined ?
@@ -40,7 +58,7 @@ const NoteSingular = (props: Props): JSX.Element => {
 
                 <Document
                     className="pdf"
-                    file={note.contentURL}
+                    file={note.url}
                     onLoadSuccess={({ numPages }) => setNumPages(numPages)}
                 >
                     {Array(numPages).fill(null).map((_, i) => {
