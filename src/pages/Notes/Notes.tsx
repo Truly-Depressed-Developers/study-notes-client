@@ -11,14 +11,16 @@ const notes: NoteInfo[] = [
 		title: "Algebra liniowa",
 		dateAdded: Date.now(),
 		university: "AGH",
-		degreeCourse: "ISI"
+		degreeCourse: "ISI",
+		upvotes: 69
 	},
 	{
 		noteId: 4202137,
 		title: "Analiza matematyczna 1",
 		dateAdded: Date.now(),
 		university: "AGH",
-		degreeCourse: "ISI"
+		degreeCourse: "ISI",
+		upvotes: 420
 	}
 ];
 
