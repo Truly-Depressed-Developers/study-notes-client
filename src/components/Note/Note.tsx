@@ -51,7 +51,7 @@ const Note = (props: Props): JSX.Element => {
                     <Typography>{props.upvotes}</Typography>
                     <Icon
                         component={IconToDisplay()}
-                        color="primary"
+                        color="secondary"
                     />
                 </div>
             </Card>

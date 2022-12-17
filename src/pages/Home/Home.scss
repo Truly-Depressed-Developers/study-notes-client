@@ -1,0 +1,20 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#home-logo {
+    background-image: url("https://media.discordapp.net/attachments/692090830806319135/1053583418895634432/Frame_21_1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    margin-top: 50px;
+}
+
+#no-select {
+    user-select: none;
+}

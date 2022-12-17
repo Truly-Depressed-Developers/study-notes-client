@@ -49,7 +49,7 @@ const Exercise = (props: Props): JSX.Element => {
                     <Typography>{props.points}</Typography>
                     <Icon
                         component={IconToDisplay()}
-                        color="primary"
+                        color="secondary"
                     />
 
                 </div>
