@@ -1,0 +1,28 @@
+@import "../../variables";
+
+#exercises {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	max-width: 960px;
+	width: 100%;
+	background-color: orange;
+	margin: 0 auto;
+	height: calc(100vh - $header_height);
+
+	#search {
+		height: $search_height;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	#tiles {
+		display: flex;
+		flex-direction: column;
+		height: calc(100% - $search_height);
+		gap: 12px;
+		padding: 20px;
+
+	}
+}
