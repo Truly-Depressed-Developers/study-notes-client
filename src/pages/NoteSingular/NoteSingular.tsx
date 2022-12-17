@@ -10,30 +10,7 @@ import { Note } from "../../components/Note/Note";
 
 type Props = {}
 
-const _resolver: { [id: number]: NoteInfoExtended } = {
-    69696969: {
-        noteId: 69696969,
-        title: "Algebra liniowa",
-        dateAdded: Date.now(),
-        university: "AGH",
-        degreeCourse: "ISI",
-        contentURL: "/media/pdf/skrypt v0.5.pdf",
-        upvotes: 69,
-        author: "Your mom",
-        category: "Matematyka"
-    },
-    4202137: {
-        noteId: 4202137,
-        title: "Analiza matematyczna 1",
-        dateAdded: Date.now(),
-        university: "AGH",
-        degreeCourse: "ISI",
-        contentURL: "/media/pdf/W14.pdf",
-        upvotes: 420,
-        author: "Bogdan Ćmiel",
-        category: "Matematyka"
-    }
-};
+const _resolver: { [id: number]: NoteInfoExtended } = {};
 
 const NoteSingular = (props: Props): JSX.Element => {
     const { id } = useParams();

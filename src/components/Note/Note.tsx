@@ -13,11 +13,11 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 type Props = NoteInfo & { scrollable?: boolean };
 
 const Note = (props: Props): JSX.Element => {
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
-    const onNoteClick = useCallback(() => {
-        navigate(`./${props.noteId}`);
-    }, [navigate, props.noteId]);
+	const onNoteClick = useCallback(() => {
+		navigate(`./${props.id}`);
+	}, [navigate, props.id]);
 
     const IconToDisplay = () => props.scrollable ? KeyboardArrowUpIcon : ArrowForwardIosIcon;
 
