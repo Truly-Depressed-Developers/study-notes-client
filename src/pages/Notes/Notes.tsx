@@ -6,42 +6,23 @@ import config from "../../config";
 
 type Props = {}
 
-const notes: NoteInfo[] = [
-    {
-        noteId: 69696969,
-        title: "Algebra liniowa",
-        dateAdded: Date.now(),
-        university: "AGH",
-        degreeCourse: "ISI",
-        upvotes: 69,
-        author: "Your mom",
-        category: "Matematyka"
-    },
-    {
-        noteId: 4202137,
-        title: "Analiza matematyczna 1",
-        dateAdded: Date.now(),
-        university: "AGH",
-        degreeCourse: "ISI",
-        upvotes: 420,
-        author: "Bogdan Ćmiel",
-        category: "Matematyka"
-    }
-];
+type General = {
+	id: number,
+	name: string
+}
 
 const Notes = (props: Props): JSX.Element => {
-	const [uni, setUni] = useState("");
-	const [course, setCourse] = useState("");
-	const [subject, setSubject] = useState("");
-	const [search, setSearch] = useState("");
-	const [uniList, setUniList] = useState<string[]>([]);
-	const [courseList, setCourseList] = useState<string[]>([]);
-	const [subjectList, setSubjectList] = useState<string[]>([]);
-
+	const [uni, setUni] = useState<number>(-1);
+	const [course, setCourse] = useState<number>(-1);
+	const [subject, setSubject] = useState<number>(-1);
+	const [uniList, setUniList] = useState<General[]>([]);
+	const [courseList, setCourseList] = useState<General[]>([]);
+	const [subjectList, setSubjectList] = useState<General[]>([]);
+	const [notes, setNotes] = useState<NoteInfo[]>([]);
 
 	const getUnis = () => {
-		fetch(`http://${config.ip}/get_unis`, {
-			method: 'GET'
+		fetch(`http://${config.ip}/get_universities`, {
+			method: "POST"
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -53,10 +34,15 @@ const Notes = (props: Props): JSX.Element => {
 	}
 
 	const getCourses = () => {
-		fetch(`http://${config.ip}/get_courses?` + new URLSearchParams({
-			uni: uni
-		}), {
-			method: 'GET'
+		var formData = new FormData();
+		formData.append("uni", uni.toString());
+
+		fetch(`http://${config.ip}/get_courses`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: formData
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -68,8 +54,8 @@ const Notes = (props: Props): JSX.Element => {
 	}
 
 	const getSubjects = () => {
-		fetch(`http://${config.ip}/get_subjects?`, {
-			method: 'GET'
+		fetch(`http://${config.ip}/get_subjects`, {
+			method: 'POST'
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -80,53 +66,85 @@ const Notes = (props: Props): JSX.Element => {
 			});
 	}
 
+	const getNotes = () => {
+		var formData = new FormData();
+		formData.append("uni", uni.toString());
+		formData.append("course", course.toString())
+		formData.append("subject", subject.toString())
+
+		fetch(`http://${config.ip}/get_notes`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: new URLSearchParams({
+				"id_university": uni.toString(),
+				"id_subject": course.toString(),
+				"id_degree_course": subject.toString()
+			})
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+
+				setNotes(data);
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+	}
+
+	useEffect(getSubjects, [])
 	useEffect(getUnis, [])
 	useEffect(getCourses, [uni])
-	useEffect(getSubjects, [])
+	useEffect(getNotes, [uni, course, subject])
 
-    return (
-        <div id="notes">
-            <div id="search">
-                <input type="search" id="search-bar" value={search} onChange={(s) => setSearch(s.target.value)} />
-                <select name="uni" id="uni-select" value={uni} onChange={(u) => setUni(u.target.value)}>
-                    {
-                        uniList.map((e) => {
-                            return (<option value={e}>{e}</option>)
-                        })
-                    }
-                </select>
-                <select name="course" id="course-select" value={course} onChange={(c) => setCourse(c.target.value)}>
-                    {
-                        courseList.map((e) => {
-                            return (<option value={e}>{e}</option>)
-                        })
-                    }
-                </select>
-                <select name="subject" id="subject-select" value={subject} onChange={(s) => setSubject(s.target.value)}>
-                    {
-                        subjectList.map((e) => {
-                            return (<option value={e}>{e}</option>)
-                        })
-                    }
-                </select>
-            </div>
-            <div id="tiles">
-                {notes.map(n =>
-                    <Note
-                        key={n.noteId}
-                        noteId={n.noteId}
-                        title={n.title}
-                        dateAdded={n.dateAdded}
-                        university={n.university}
-                        degreeCourse={n.degreeCourse}
-                        upvotes={n.upvotes}
-                        author={n.author}
-                        category={n.category}
-                    />
-                )}
-            </div>
-        </div>
-    );
+	return (
+		<div id="notes">
+			<div id="search">
+				<select name="uni" id="uni-select" value={uni} onChange={(e) => setUni(parseInt(e.target.value))}>
+					<option value={-1} disabled></option>
+					{
+						uniList.map((e) => {
+							return (<option key={e.id} value={e.id}>{e.name}</option>)
+						})
+					}
+				</select>
+				<select name="course" id="course-select" value={course} onChange={(e) => setCourse(parseInt(e.target.value))}>
+					<option value={-1} disabled></option>
+					{
+						courseList.map((e) => {
+							return (<option key={e.id} value={e.id}>{e.name}</option>)
+						})
+					}
+				</select>
+				<select name="subject" id="subject-select" value={subject} onChange={(e) => setSubject(parseInt(e.target.value))}>
+					<option value={-1} disabled></option>
+
+					{
+						subjectList.map((e) => {
+							return (<option key={e.id} value={e.id}>{e.name}</option>)
+						})
+					}
+				</select>
+			</div>
+			<div id="tiles">
+				{notes.map(n =>
+					<Note
+						key={n.id}
+						id={n.id}
+						title={n.title}
+						timestamp={n.timestamp}
+						university={n.university}
+						degree_course={n.degree_course}
+						upvotes={n.upvotes}
+						username={n.username}
+						subject={n.subject}
+					/>
+				)}
+			</div>
+		</div>
+	);
 }
 
 export { Notes };
