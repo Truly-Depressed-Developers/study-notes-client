@@ -15,7 +15,7 @@ function Inside() {
 	return (
 		<div className="App">
 			<nav id="navigation">
-				<div id="logo">logo</div>
+				<div id="logo"></div>
 				<div id="menu-items">
 					<Link to="/">Home</Link>
 					<Link to="/notes">Notes</Link>
