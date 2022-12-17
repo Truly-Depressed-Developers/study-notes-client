@@ -6,15 +6,27 @@
 	justify-content: center;
 	align-items: center;
 	height: $header_height;
+	position: fixed;
 
 	#logo,
 	#user-stuff {
-		background-color: green;
+		background-color: #F0F0F0;
 		width: $logo_width;
 		height: 100%;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+
+		* {
+			text-decoration: none;
+		}
+	}
+
+	#logo {
+		background-image: url("https://ih1.redbubble.net/image.671960572.1880/pp,840x830-pad,1000x1000,f8f8f8.u4.jpg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 
 	#menu-items {
@@ -23,11 +35,11 @@
 		justify-content: center;
 		align-items: center;
 		height: 100%;
-		background-color: lime;
+		// background-color: lime;
 
 		* {
 			text-decoration: none;
-			background-color: red;
+			background-color: #F0F0F0;
 			height: 100%;
 			width: calc(100% / $menu_items_count);
 			display: flex;
@@ -40,5 +52,6 @@
 #routes {
 	width: 100%;
 	height: calc(100vh - $header_height);
+	padding-top: $header_height;
 	display: flex;
 }
