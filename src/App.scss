@@ -1,0 +1,37 @@
+@import "./variables";
+
+#navigation {
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: $header_height;
+
+	#logo {
+		background-color: green;
+		width: $logo_width;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#menu-items {
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-around;
+		align-items: center;
+		height: 100%;
+		background-color: lime;
+
+		* {
+			text-decoration: none;
+			background-color: red;
+			height: 100%;
+			width: calc(100% / $menu_items_count);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
