@@ -7,7 +7,7 @@ import "./Login.scss"
 import config from "../../config";
 
 type Props = {
-    onLogin: (userId: number) => void
+    onLogin: (userId: number, username: string) => void
 }
 
 const Login = (props: Props): JSX.Element => {
@@ -41,7 +41,7 @@ const Login = (props: Props): JSX.Element => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.description === "Logowanie powiodło się") {
-                        props.onLogin(data.id);
+                        props.onLogin(data.id, username);
                         navigate("/");
                     } else {
                         setLogin("");

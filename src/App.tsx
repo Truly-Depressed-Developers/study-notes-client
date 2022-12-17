@@ -15,6 +15,7 @@ import { PointDisplay } from './components/PointDisplay/PointDisplay';
 
 function Inside() {
     const [userId, setUserId] = useState(-1);
+    const [username, setUsername] = useState("Msiorr");
 
     return (
         <div className="App">
@@ -28,7 +29,10 @@ function Inside() {
                 <div id="user-stuff">
                     {userId !== -1 ?
                         <>
-                            <PointDisplay />
+                            <PointDisplay
+                                amount={69}
+                            />
+                            <span className='username'>{username}</span>
                         </> :
                         <>
                             <Link to="/login">Login</Link>
@@ -44,7 +48,7 @@ function Inside() {
                     <Route path='/notes' element={<Notes />} />
                     <Route path='/notes/:id' element={<NoteSingular />} />
                     <Route path='/registration' element={<Registration />} />
-                    <Route path='/login' element={<Login onLogin={(userId) => setUserId(userId)} />} />
+                    <Route path='/login' element={<Login onLogin={(userId, username) => { setUserId(userId); setUsername(username) }} />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>

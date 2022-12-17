@@ -1,13 +1,15 @@
 import "./PointDisplay.scss";
 import StarCircle from "./StarCircle";
 
-type Props = {}
+type Props = {
+    amount: number
+}
 
 const PointDisplay = (props: Props): JSX.Element => {
     return (
         <div className="point-display">
             <StarCircle />
-            <span>2137</span>
+            <span>{props.amount}</span>
         </div>
     );
 }

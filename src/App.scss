@@ -1,57 +1,68 @@
 @import "./variables";
 
 #navigation {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: $header_height;
-	position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $header_height;
+    position: fixed;
 
-	#logo,
-	#user-stuff {
-		background-color: #F0F0F0;
-		width: $logo_width;
-		height: 100%;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
+    #logo,
+    #user-stuff {
+        width: $logo_width;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
 
-		* {
-			text-decoration: none;
-		}
-	}
+        * {
+            text-decoration: none;
+        }
 
-	#logo {
-		background-image: url("https://ih1.redbubble.net/image.671960572.1880/pp,840x830-pad,1000x1000,f8f8f8.u4.jpg");
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-	}
+        .username {
+            margin-top: -4px;
+            margin-left: 16px;
+            font-size: 1.125rem;
+        }
+    }
 
-	#menu-items {
-		display: flex;
-		flex-grow: 1;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		// background-color: lime;
+    #user-stuff {
+        justify-content: flex-end;
+        padding-right: 24px;
+        width: fit-content;
+    }
 
-		* {
-			text-decoration: none;
-			background-color: #F0F0F0;
-			height: 100%;
-			width: calc(100% / $menu_items_count);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	}
+    #logo {
+        background-image: url("https://ih1.redbubble.net/image.671960572.1880/pp,840x830-pad,1000x1000,f8f8f8.u4.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    #menu-items {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        // background-color: lime;
+
+        * {
+            text-decoration: none;
+            background-color: #F0F0F0;
+            height: 100%;
+            width: calc(100% / $menu_items_count);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
 
 #routes {
-	width: 100%;
-	height: calc(100vh - $header_height);
-	padding-top: $header_height;
-	display: flex;
+    width: 100%;
+    height: calc(100vh - $header_height);
+    padding-top: $header_height;
+    display: flex;
 }
