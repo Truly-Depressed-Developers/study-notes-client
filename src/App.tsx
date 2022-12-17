@@ -12,40 +12,44 @@ import { Login } from './pages/Login/Login';
 import { NoteSingular } from './pages/NoteSingular/NoteSingular';
 
 function Inside() {
-    return (
-        <div className="App">
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/notes">Notes</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/registration">Registration</Link>
-                <Link to="/random">Random</Link>
-            </nav>
+	return (
+		<div className="App">
+			<nav id="navigation">
+				<div id="logo">logo</div>
+				<div id="menu-items">
+					<Link to="/">Home</Link>
+					<Link to="/notes">Notes</Link>
+					<Link to="/login">Login</Link>
+					<Link to="/registration">Registration</Link>
+					<Link to="/random">Random</Link>
+				</div>
+			</nav>
+			<div id="routes">
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/notes' element={<Notes />} />
+					<Route path='/notes/:id' element={<NoteSingular />} />
+					<Route path='/registration' element={<Registration />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='*' element={<NotFound />} />
+				</Routes>
+			</div>
 
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/notes' element={<Notes />} />
-                <Route path='/notes/:id' element={<NoteSingular />} />
-                <Route path='/registration' element={<Registration />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='*' element={<NotFound />} />
-            </Routes>
-
-        </div>
-    )
+		</div>
+	)
 }
 
 const theme = createTheme();
 
 // Providers
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Inside />
-            </BrowserRouter>
-        </ThemeProvider >
-    );
+	return (
+		<ThemeProvider theme={theme}>
+			<BrowserRouter>
+				<Inside />
+			</BrowserRouter>
+		</ThemeProvider >
+	);
 }
 
 export default App;

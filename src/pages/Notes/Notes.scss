@@ -1,5 +1,25 @@
+@import "../../variables";
+
 #notes {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: calc(100% - 2 * $notes_page_banner_size);
+	background-color: orange;
+	margin-left: $notes_page_banner_size;
+	height: calc(100vh - $header_height);
+
+	#search {
+		height: $search_height;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	#tiles {
+		height: calc(100% - $search_height);
+		gap: 12px;
+		padding: 20px;
+
+	}
 }
