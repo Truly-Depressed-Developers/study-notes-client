@@ -1,7 +1,7 @@
 @import "./variables";
 
 #navigation {
-    padding-left: 24px;
+    padding-left: 36px;
     padding-right: 12px;
     // width: 100vw;
     max-width: calc(100vw - 17px);
@@ -9,6 +9,10 @@
     justify-content: center;
     align-items: center;
     height: $header_height;
+
+    #logo {
+        transform: scale(1.2);
+    }
 
     #logo,
     #user-stuff {

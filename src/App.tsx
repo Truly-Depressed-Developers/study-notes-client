@@ -33,7 +33,6 @@ function Inside() {
                 </div>
                 <div id="user-stuff">
                     {userId === -1 ?
-
                         <div className="registration">
                             <Link to="/login">Login</Link>
                             <Link to="/registration">Register</Link>

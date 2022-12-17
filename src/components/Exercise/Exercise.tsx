@@ -9,6 +9,7 @@ import { dateToHumanReadable } from "../../helpers/dateFormat";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import StarCircle from "../PointDisplay/StarCircle";
 
 type Props = ExerciseInfo & { scrollable?: boolean };
 
@@ -44,12 +45,8 @@ const Exercise = (props: Props): JSX.Element => {
                     </div>
                 </div>
                 <div className="exercise-likes">
-                    <Icon
-                        component={FavoriteIcon}
-                        color="warning"
-                    />
+                    <StarCircle />
                     <Typography>{props.points}</Typography>
-
                     <Icon
                         component={IconToDisplay()}
                         color="primary"
