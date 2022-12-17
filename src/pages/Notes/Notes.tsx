@@ -3,8 +3,9 @@ import { Note } from "../../components/Note/Note";
 import { NoteInfo } from "../../types/NoteInfo";
 import "./Notes.scss";
 import config from "../../config";
-import { Button } from "@mui/material";
+import { Button, Fab, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { Navigate, useNavigate } from "react-router-dom";
+import AddIcon from "@mui/icons-material/Add"
 
 type Props = {}
 
@@ -103,54 +104,88 @@ const Notes = (props: Props): JSX.Element => {
     useEffect(getNotes, [uni, course, subject])
 
     return (
-        <div id="notes">
-            <div id="search">
-                <select name="uni" id="uni-select" value={uni} onChange={(e) => setUni(parseInt(e.target.value))}>
-                    <option value={-1}></option>
-                    {
-                        uniList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
-                        })
-                    }
-                </select>
-                <select name="course" id="course-select" value={course} onChange={(e) => setCourse(parseInt(e.target.value))}>
-                    <option value={-1}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-                    {
-                        courseList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
-                        })
-                    }
-                </select>
-                <select name="subject" id="subject-select" value={subject} onChange={(e) => setSubject(parseInt(e.target.value))}>
-                    <option value={-1}></option>
+        <>
+            <div id="notes">
+                <div id="search">
+                    <FormControl fullWidth>
+                        <InputLabel id="university-select">University</InputLabel>
+                        <Select
+                            labelId="university-select"
+                            id="demo-simple-select"
+                            value={uni}
+                            label="University"
+                            onChange={(e) => setUni(parseInt(e.target.value as string))}
+                        >
+                            <MenuItem value={-1}>All</MenuItem>
+                            {
+                                uniList.map((e) => {
+                                    return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                    <FormControl fullWidth disabled={uni == -1}>
+                        <InputLabel id="course-select">Course</InputLabel>
+                        <Select
+                            labelId="course-select"
+                            id="demo-simple-select"
+                            value={course}
+                            label="Course"
+                            onChange={(e) => setCourse(parseInt(e.target.value as string))}
+                        >
+                            <MenuItem value={-1}>All</MenuItem>
+                            {
+                                courseList.map((e) => {
+                                    return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
+                                })
+                            }
+                        </Select>
+                    </FormControl>
 
-                    {
-                        subjectList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
-                        })
-                    }
-                </select>
-            </div>
-            <Button
+                    <FormControl fullWidth>
+                        <InputLabel id="course-select">Subject</InputLabel>
+                        <Select
+                            labelId="subject-select"
+                            id="demo-simple-select"
+                            value={subject}
+                            label="Subject"
+                            onChange={(e) => setSubject(parseInt(e.target.value as string))}
+                        >
+                            <MenuItem value={-1}>All</MenuItem>
+                            {
+                                subjectList.map((e) => {
+                                    return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                </div>
+                {/* <Button
+                className="add-note-button"
                 variant="contained"
                 onClick={() => navigate("/addNote")}
-            >Add Note</Button>
-            <div id="tiles">
-                {notes.map(n =>
-                    <Note
-                        key={n.id}
-                        id={n.id}
-                        title={n.title}
-                        timestamp={n.timestamp}
-                        university={n.university}
-                        degree_course={n.degree_course}
-                        upvotes={n.upvotes}
-                        username={n.username}
-                        subject={n.subject}
-                    />
-                )}
+            >Add Note</Button> */}
+                <Fab color="primary" aria-label="add" className="fab-button" onClick={() => navigate("/addNote")}>
+                    <AddIcon />
+                </Fab>
+                <div id="tiles">
+                    {notes.map(n =>
+                        <Note
+                            key={n.id}
+                            id={n.id}
+                            title={n.title}
+                            timestamp={n.timestamp}
+                            university={n.university}
+                            degree_course={n.degree_course}
+                            upvotes={n.upvotes}
+                            username={n.username}
+                            subject={n.subject}
+                        />
+                    )}
+                </div>
             </div>
-        </div>
+            <div className="spacer" style={{ height: 60 }}></div>
+        </>
     );
 }
 

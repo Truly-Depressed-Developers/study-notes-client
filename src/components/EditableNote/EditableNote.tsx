@@ -1,6 +1,6 @@
 import "./EditableNote.scss";
 
-import { TextField, Button, Alert } from "@mui/material";
+import { TextField, Button, Alert, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import config from "../../config";
@@ -110,38 +110,63 @@ const EditableNote = (props: Props): JSX.Element => {
     }
 
     return (
-        <div>
-            <div id="search">
-                <select name="uni" id="uni-select" value={uni} onChange={(e) => setUni(parseInt(e.target.value))}>
-                    <option value={-1}></option>
+        <div className="editable-node">
+
+            <FormControl fullWidth>
+                <InputLabel id="university-select">University</InputLabel>
+                <Select
+                    labelId="university-select"
+                    id="demo-simple-select"
+                    value={uni == -1 ? "" : uni}
+                    label="University"
+                    onChange={(e) => setUni(parseInt(e.target.value as string))}
+                >
                     {
                         uniList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
+                            return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
                         })
                     }
-                </select>
-                <select name="course" id="course-select" value={course} onChange={(e) => setCourse(parseInt(e.target.value))}>
-                    <option value={-1}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                </Select>
+            </FormControl>
+            <FormControl fullWidth disabled={uni == -1}>
+                <InputLabel id="course-select">Course</InputLabel>
+                <Select
+                    labelId="course-select"
+                    id="demo-simple-select"
+                    value={course == -1 ? "" : course}
+                    label="Course"
+                    onChange={(e) => setCourse(parseInt(e.target.value as string))}
+                >
                     {
                         courseList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
+                            return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
                         })
                     }
-                </select>
-                <select name="subject" id="subject-select" value={subject} onChange={(e) => setSubject(parseInt(e.target.value))}>
-                    <option value={-1}></option>
+                </Select>
+            </FormControl>
 
+            <FormControl fullWidth>
+                <InputLabel id="course-select">Subject</InputLabel>
+                <Select
+                    labelId="subject-select"
+                    id="demo-simple-select"
+                    value={subject == -1 ? "" : subject}
+                    label="Subject"
+                    onChange={(e) => setSubject(parseInt(e.target.value as string))}
+                >
                     {
                         subjectList.map((e) => {
-                            return (<option key={e.id} value={e.id}>{e.name}</option>)
+                            return (<MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>)
                         })
                     }
-                </select>
-            </div>
+                </Select>
+            </FormControl>
+
             <TextField
                 id="title-input"
                 label="Title"
                 variant="outlined"
+                fullWidth
                 value={title}
                 onChange={(l) => setTitle(l.target.value)}
             />
@@ -149,6 +174,7 @@ const EditableNote = (props: Props): JSX.Element => {
                 id="url-input"
                 label="Url"
                 variant="outlined"
+                fullWidth
                 value={url}
                 onChange={(l) => setUrl(l.target.value)}
             />
@@ -158,6 +184,7 @@ const EditableNote = (props: Props): JSX.Element => {
             >Please provide input data!</Alert> : ""}
             <Button
                 variant="contained"
+                fullWidth
                 onClick={() => submitForm()}
             >Add note</Button>
         </div>

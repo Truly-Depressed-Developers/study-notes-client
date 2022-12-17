@@ -6,15 +6,22 @@
     flex-direction: column;
     max-width: 960px;
     width: 100%;
-    background-color: orange;
+    // background-color: orange;
     margin: 0 auto;
-    height: calc(100vh - $header_height);
+    height: max-content;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px black;
 
     #search {
         height: $search_height;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        gap: 15px;
+        padding: 15px;
+        padding-bottom: 0px;
     }
 
     #tiles {
@@ -22,7 +29,18 @@
         flex-direction: column;
         height: calc(100% - $search_height);
         gap: 12px;
-        padding: 20px;
+        padding: 15px;
+        padding-top: 0px;
+    }
 
+    .add-note-button {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .fab-button {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
     }
 }
