@@ -10,56 +10,59 @@ import { useEffect, useState } from "react";
 // import { Exercise } from "../../components/Exercise/Exercise";
 import { Exercise } from "../../components/Exercise/Exercise";
 import config from "../../config";
+import { ExerciseTop } from "../../components/ExerciseTop/ExerciseTop";
 
 type Props = {}
 
 const ExerciseSingular = (props: Props): JSX.Element => {
-	const { id } = useParams();
+    const { id } = useParams();
 
-	const [exercise, setExercise] = useState<ExerciseInfoExtended>();
+    const [exercise, setExercise] = useState<ExerciseInfoExtended>();
 
-	// const [numPages, setNumPages] = useState(0);
+    // const [numPages, setNumPages] = useState(0);
 
-	useEffect(() => {
-		fetch(`http://${config.ip}/get_one_exercise`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			body: new URLSearchParams({
-				id: id?.toString() || ""
-			})
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setExercise(data);
-			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});
-	}, [id]);
+    useEffect(() => {
+        fetch(`http://${config.ip}/get_one_question`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                id: id?.toString() || ""
+            })
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
 
-	return (
-		exercise === undefined ?
-			<Typography variant="h4">
-				Nie znaleziono zadania
-			</Typography>
-			:
-			<div className="exercise-singular">
-				<Exercise
-					id={exercise.id}
-					title={exercise.title}
-					university={exercise.university}
-					degree_course={exercise.degree_course}
-					timestamp={exercise.timestamp}
-					upvotes={exercise.upvotes}
-					username={exercise.username}
-					subject={exercise.subject}
-					scrollable={true}
-				/>
-				<div className="spacer"></div>
-			</div>
-	);
+                setExercise(data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, [id]);
+
+    return (
+        exercise === undefined ?
+            <Typography variant="h4">
+                Nie znaleziono zadania
+            </Typography>
+            :
+            <div className="exercise-singular">
+                <ExerciseTop
+                    id={exercise.id}
+                    username={exercise.username}
+                    university={exercise.university}
+                    degree_course={exercise.degree_course}
+                    subject={exercise.subject}
+                    title={exercise.title}
+                    content={exercise.content}
+                    points={exercise.points}
+                    exercise_set={exercise.exercise_set}
+                    timestamp={exercise.timestamp}
+                />
+            </div >
+    );
 }
 
 export { ExerciseSingular };

@@ -13,11 +13,12 @@ import { NoteSingular } from './pages/NoteSingular/NoteSingular';
 import { useState } from 'react';
 import { PointDisplay } from './components/PointDisplay/PointDisplay';
 import { Exercises } from './pages/Exercises/Exercises';
+import { ExerciseSingular } from './pages/ExerciseSingular/ExerciseSingular';
 import { AddNote } from './pages/AddNote/AddNote';
 
 function Inside() {
     const [userId, setUserId] = useState(-1);
-    const [username, setUsername] = useState("Msiorr");
+    const [username, setUsername] = useState("");
 
     return (
         <div className="App">
@@ -29,29 +30,19 @@ function Inside() {
                     <Link to="/exercises">Exercises</Link>
                 </div>
                 <div id="user-stuff">
-                    {userId !== -1 ?
-                        <>
-                            <PointDisplay
-                                amount={69}
-                            />
-                            <span className='username'>{username}</span>
-                        </> :
-                        <div className='registration'>
-                            <Link to="/login">Login</Link>
-                            <Link to="/registration">Register</Link>
-                        </div>
-                    }
+                    <Link to="/login">Login</Link>
+                    <Link to="/registration">Registration</Link>
                 </div>
             </nav>
             <div id="routes">
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/notes' element={<Notes />} />
+                    <Route path='/exercises' element={<Exercises />} />
+                    <Route path='/exercises/:id' element={<ExerciseSingular />} />
                     <Route path='/notes/:id' element={<NoteSingular />} />
                     <Route path='/registration' element={<Registration />} />
                     <Route path='/login' element={<Login onLogin={(userId, username) => { setUserId(userId); setUsername(username) }} />} />
-                    <Route path='/exercises' element={<Exercises />} />
-                    <Route path='/addNote' element={<AddNote />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>

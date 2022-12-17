@@ -1,5 +1,13 @@
 import { ExerciseInfo } from "./ExerciseInfo";
 
 export type ExerciseInfoExtended = ExerciseInfo & {
-	url: string
+    answers: ExersiseSingularAnswer
+}
+
+type ExersiseSingularAnswer = {
+    username: string,
+    content: string,
+    timestamp: string,
+    upvotes: number,
+    best_answer: number
 }
