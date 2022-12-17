@@ -13,49 +13,50 @@ type Props = {}
 const _resolver: { [id: number]: NoteInfoExtended } = {};
 
 const NoteSingular = (props: Props): JSX.Element => {
-	const { id } = useParams();
+    const { id } = useParams();
 
-	const note = id !== undefined ? _resolver[parseInt(id)] : undefined;
+    const note = id !== undefined ? _resolver[parseInt(id)] : undefined;
 
-	const [numPages, setNumPages] = useState(0);
+    const [numPages, setNumPages] = useState(0);
 
-	return (
-		note === undefined ?
-			<Typography variant="h4">
-				Nie znaleziono notatki
-			</Typography>
-			:
-			<div className="note-singular">
-				<Note
-					id={note.id}
-					title={note.title}
-					university={note.university}
-					degree_course={note.degree_course}
-					timestamp={note.timestamp}
-					upvotes={note.upvotes}
-					username={note.username}
-					subject={note.subject}
-				/>
+    return (
+        note === undefined ?
+            <Typography variant="h4">
+                Nie znaleziono notatki
+            </Typography>
+            :
+            <div className="note-singular">
+                <Note
+                    noteId={note.noteId}
+                    title={note.title}
+                    university={note.university}
+                    degreeCourse={note.degreeCourse}
+                    dateAdded={note.dateAdded}
+                    upvotes={note.upvotes}
+                    author={note.author}
+                    category={note.category}
+                    scrollable={true}
+                />
 
-				<Document
-					className="pdf"
-					file={note.contentURL}
-					onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-				>
-					{Array(numPages).fill(null).map((_, i) => {
-						return (<Page
-							key={i}
-							pageNumber={i + 1}
-							renderAnnotationLayer={false}
-							renderTextLayer={false}
-						/>)
-					}
-					)}
-				</Document>
+                <Document
+                    className="pdf"
+                    file={note.contentURL}
+                    onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                >
+                    {Array(numPages).fill(null).map((_, i) => {
+                        return (<Page
+                            key={i}
+                            pageNumber={i + 1}
+                            renderAnnotationLayer={false}
+                            renderTextLayer={false}
+                        />)
+                    }
+                    )}
+                </Document>
 
-				<div className="spacer"></div>
-			</div>
-	);
+                <div className="spacer"></div>
+            </div>
+    );
 }
 
 export { NoteSingular };
