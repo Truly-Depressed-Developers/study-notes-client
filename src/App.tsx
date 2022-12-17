@@ -26,7 +26,7 @@ function Inside() {
                 <div id="menu-items">
                     <Link to="/">Home</Link>
                     <Link to="/notes">Notes</Link>
-                    <Link to="/random">Random</Link>
+                    <Link to="/exercises">Exercises</Link>
                 </div>
                 <div id="user-stuff">
                     {userId !== -1 ?
@@ -36,17 +36,11 @@ function Inside() {
                             />
                             <span className='username'>{username}</span>
                         </> :
-                        <>
+                        <div className='registration'>
                             <Link to="/login">Login</Link>
-                            <Link to="/registration">Registration</Link>
-                        </>
+                            <Link to="/registration">Register</Link>
+                        </div>
                     }
-
-                    <Link to="/exercises">Exercises</Link>
-                </div>
-                <div id="user-stuff">
-                    <Link to="/login">Login</Link>
-                    <Link to="/registration">Registration</Link>
                 </div>
             </nav>
             <div id="routes">

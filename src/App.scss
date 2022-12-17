@@ -1,13 +1,13 @@
 @import "./variables";
 
 #navigation {
-    width: 100%;
+    padding-left: 24px;
+    padding-right: 12px;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     height: $header_height;
-    position: fixed;
-    z-index: 1000;
 
     #logo,
     #user-stuff {
@@ -32,6 +32,23 @@
         justify-content: flex-end;
         padding-right: 24px;
         width: fit-content;
+
+        .registration {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            &>*:nth-child(2) {
+                background-color: #e0aeff;
+                padding: 8px;
+                border-radius: 4px;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #CA76FF;
+                }
+            }
+        }
     }
 
     #logo {
@@ -42,21 +59,36 @@
     }
 
     #menu-items {
+        border-radius: 0 8px 8px 0;
         display: flex;
         flex-grow: 1;
         justify-content: center;
         align-items: center;
         height: 100%;
-        // background-color: lime;
+        font-size: 1.2rem;
+        width: fit-content;
 
         * {
             text-decoration: none;
             background-color: #F0F0F0;
             height: 100%;
-            width: calc(100% / $menu_items_count);
+            width: calc(80% / $menu_items_count);
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: #e0aeff;
+            }
+
+            &:first-child {
+                border-bottom-left-radius: 12px;
+            }
+
+            &:last-child {
+                border-bottom-right-radius: 12px;
+            }
         }
     }
 }
