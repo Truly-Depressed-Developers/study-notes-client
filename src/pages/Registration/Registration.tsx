@@ -57,40 +57,42 @@ const Registration = (props: Props): JSX.Element => {
 
 	return (
 		<div id="register">
-			<TextField
-				required
-				id="standard-required"
-				label="Username"
-				value={username}
-				onChange={(l) => setLogin(l.target.value)}
-				variant="standard"
-			/>
-			<TextField
-				required
-				id="standard-password-input"
-				label="Password"
-				type="password"
-				value={password}
-				onChange={(p) => setPassword(p.target.value)}
-				autoComplete="off"
-				variant="standard"
-			/>
-			{regError ? <Alert
-				className="error-message"
-				severity="error"
-			>Username is taken!</Alert> : ""}
-			{miscError ? <Alert
-				className="error-message"
-				severity="error"
-			>Unexpected error occured</Alert> : ""}
-			{noDataError ? <Alert
-				severity="warning"
-				className="error-message"
-			>Please provide input data!</Alert> : ""}
-			<Button
-				variant="contained"
-				onClick={() => submitForm()}
-			>Sign up!</Button>
+			<div id="smol-register">
+				<TextField
+					required
+					id="standard-required"
+					label="Username"
+					value={username}
+					onChange={(l) => setLogin(l.target.value)}
+					variant="standard"
+				/>
+				<TextField
+					required
+					id="standard-password-input"
+					label="Password"
+					type="password"
+					value={password}
+					onChange={(p) => setPassword(p.target.value)}
+					autoComplete="off"
+					variant="standard"
+				/>
+				{regError ? <Alert
+					className="error-message"
+					severity="error"
+				>Username is taken!</Alert> : ""}
+				{miscError ? <Alert
+					className="error-message"
+					severity="error"
+				>Unexpected error occured</Alert> : ""}
+				{noDataError ? <Alert
+					severity="warning"
+					className="error-message"
+				>Please provide input data!</Alert> : ""}
+				<Button
+					variant="contained"
+					onClick={() => submitForm()}
+				>Sign up!</Button>
+			</div>
 		</div>
 	);
 }
