@@ -20,8 +20,7 @@ const _resolver: { [id: number]: NoteInfoExtended } = {
         contentURL: "/media/pdf/skrypt v0.5.pdf",
         upvotes: 69,
         author: "Your mom",
-        category: "Matematyka",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor nihil recusandae eos eligendi beatae dolores obcaecati perspiciatis minus numquam? Ratione reprehenderit modi atque eligendi totam illo sapiente nulla vel officiis! Saepe ullam, fugit quisquam a maiores, atque distinctio natus velit, est iure laborum praesentium perspiciatis? Dicta doloribus doloremque culpa assumenda."
+        category: "Matematyka"
     },
     4202137: {
         noteId: 4202137,
@@ -32,8 +31,7 @@ const _resolver: { [id: number]: NoteInfoExtended } = {
         contentURL: "/media/pdf/W14.pdf",
         upvotes: 420,
         author: "Bogdan Ćmiel",
-        category: "Matematyka",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum architecto praesentium molestias perspiciatis hic tempore eveniet, aut ratione quasi aliquam tenetur harum incidunt, sequi quibusdam!"
+        category: "Matematyka"
     }
 };
 
