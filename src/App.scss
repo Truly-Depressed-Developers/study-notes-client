@@ -49,6 +49,27 @@
                 }
             }
         }
+
+        .logged-info {
+            display: flex;
+            align-items: center;
+
+            &>*:nth-child(1) {
+                width: 22px;
+                height: 22px;
+                margin-right: 8px;
+            }
+
+            &>*:nth-child(2) {
+                font-size: 1.125rem;
+                margin-right: 32px;
+            }
+
+            &>*:nth-child(3) {
+                font-weight: 700;
+                font-size: 1.125rem;
+            }
+        }
     }
 
     #logo {

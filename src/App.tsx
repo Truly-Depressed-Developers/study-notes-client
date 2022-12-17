@@ -15,6 +15,8 @@ import { PointDisplay } from './components/PointDisplay/PointDisplay';
 import { Exercises } from './pages/Exercises/Exercises';
 import { ExerciseSingular } from './pages/ExerciseSingular/ExerciseSingular';
 import { AddNote } from './pages/AddNote/AddNote';
+import { PROPERTY_TYPES } from '@babel/types';
+import StarCircle from './components/PointDisplay/StarCircle';
 
 function Inside() {
     const [userId, setUserId] = useState(-1);
@@ -30,8 +32,19 @@ function Inside() {
                     <Link to="/exercises">Exercises</Link>
                 </div>
                 <div id="user-stuff">
-                    <Link to="/login">Login</Link>
-                    <Link to="/registration">Registration</Link>
+                    {userId === -1 ?
+
+                        <div className="registration">
+                            <Link to="/login">Login</Link>
+                            <Link to="/registration">Register</Link>
+                        </div>
+                        :
+                        <div className='logged-info'>
+                            <StarCircle />
+                            <span>2137</span>
+                            <span>{username}</span>
+                        </div>
+                    }
                 </div>
             </nav>
             <div id="routes">
@@ -46,7 +59,6 @@ function Inside() {
                     <Route path='*' element={<NotFound />} />
                 </Routes>
             </div>
-
         </div>
     )
 }
