@@ -6,35 +6,42 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/NotFound';
+import { Registration } from './pages/Registration/Registration';
+import { Login } from './pages/Login/Login';
 
 function Inside() {
-    return (
-        <div className="App">
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/random">Random</Link>
-            </nav>
+	return (
+		<div className="App">
+			<nav>
+				<Link to="/">Home</Link>
+				<Link to="/login">Login</Link>
+				<Link to="/registration">Registration</Link>
+				<Link to="/random">Random</Link>
+				{/* /random is to trigger 404 */}
+			</nav>
 
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='*' element={<NotFound />} />
-            </Routes>
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/registration' element={<Registration />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='*' element={<NotFound />} />
+			</Routes>
 
-        </div>
-    )
+		</div>
+	)
 }
 
 const theme = createTheme();
 
 // Providers
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Inside />
-            </BrowserRouter>
-        </ThemeProvider >
-    );
+	return (
+		<ThemeProvider theme={theme}>
+			<BrowserRouter>
+				<Inside />
+			</BrowserRouter>
+		</ThemeProvider >
+	);
 }
 
 export default App;
