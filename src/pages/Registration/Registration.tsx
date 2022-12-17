@@ -29,16 +29,16 @@ const Registration = (props: Props): JSX.Element => {
 			fetch(`http://${config.ip}/register`, {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
+					'Content-Type': 'application/x-www-form-urlencoded',
 				},
-				body: JSON.stringify({
-					login: username,
-					password: password
+				body: new URLSearchParams({
+					"username": username,
+					"password": password
 				}),
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					if (!data.username_taken) {
+					if (data.description === "Rejestracja powiodła się") {
 						navigate("/login");
 					} else {
 						setLogin("");
