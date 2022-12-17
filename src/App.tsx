@@ -9,6 +9,7 @@ import { NotFound } from './pages/NotFound/NotFound';
 import { Notes } from './pages/Notes/Notes';
 import { Registration } from './pages/Registration/Registration';
 import { Login } from './pages/Login/Login';
+import { NoteSingular } from './pages/NoteSingular/NoteSingular';
 
 function Inside() {
     return (
@@ -24,6 +25,7 @@ function Inside() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/notes' element={<Notes />} />
+                <Route path='/notes/:id' element={<NoteSingular />} />
                 <Route path='/registration' element={<Registration />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='*' element={<NotFound />} />
