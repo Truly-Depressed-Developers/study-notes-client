@@ -27,14 +27,14 @@ const NoteSingular = (props: Props): JSX.Element => {
             :
             <div className="note-singular">
                 <Note
-                    noteId={note.noteId}
+                    id={note.id}
                     title={note.title}
                     university={note.university}
-                    degreeCourse={note.degreeCourse}
-                    dateAdded={note.dateAdded}
+                    degree_course={note.degree_course}
+                    timestamp={note.timestamp}
                     upvotes={note.upvotes}
-                    author={note.author}
-                    category={note.category}
+                    username={note.username}
+                    subject={note.subject}
                     scrollable={true}
                 />
 

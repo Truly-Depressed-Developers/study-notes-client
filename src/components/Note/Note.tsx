@@ -13,11 +13,11 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 type Props = NoteInfo & { scrollable?: boolean };
 
 const Note = (props: Props): JSX.Element => {
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 
-	const onNoteClick = useCallback(() => {
-		navigate(`./${props.id}`);
-	}, [navigate, props.id]);
+    const onNoteClick = useCallback(() => {
+        navigate(`./${props.id}`);
+    }, [navigate, props.id]);
 
     const IconToDisplay = () => props.scrollable ? KeyboardArrowUpIcon : ArrowForwardIosIcon;
 
@@ -31,16 +31,16 @@ const Note = (props: Props): JSX.Element => {
                     <div>
                         <Typography>{props.university}</Typography>
                         <Typography>&#x2022;</Typography>
-                        <Typography>{props.degreeCourse}</Typography>
+                        <Typography>{props.degree_course}</Typography>
                         <Typography>&#x2022;</Typography>
-                        <Typography>{props.category}</Typography>
+                        <Typography>{props.subject}</Typography>
                     </div>
                     <div>
                         <Typography>{props.title}</Typography>
                     </div>
                     <div>
-                        <Typography color="GrayText">{dateToHumanReadable(new Date(props.dateAdded))}</Typography>
-                        <Typography color="GrayText">{props.author}</Typography>
+                        <Typography color="GrayText">{dateToHumanReadable(new Date(props.timestamp))}</Typography>
+                        <Typography color="GrayText">{props.username}</Typography>
                     </div>
                 </div>
                 <div className="note-likes">
