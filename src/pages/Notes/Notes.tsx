@@ -26,6 +26,7 @@ const Notes = (props: Props): JSX.Element => {
         <div id="notes">
             {notes.map(n =>
                 <Note
+                    key={n.noteId}
                     noteId={n.noteId}
                     title={n.title}
                     dateAdded={n.dateAdded}
