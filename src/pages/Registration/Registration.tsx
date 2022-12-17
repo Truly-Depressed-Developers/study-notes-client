@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Registration.scss"
+import config from "../../config";
 
 type Props = {}
 
@@ -25,7 +26,7 @@ const Registration = (props: Props): JSX.Element => {
 		resetErrors();
 
 		if (username !== "" && password !== "") {
-			fetch('http://10.200.2.96/register', {
+			fetch(`http://${config.ip}/register`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
