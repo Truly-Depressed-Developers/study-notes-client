@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Note } from "../../components/Note/Note";
 import { NoteInfo } from "../../types/NoteInfo";
 import "./Notes.scss";
+import config from "../../config";
 
 type Props = {}
 
@@ -29,59 +30,59 @@ const notes: NoteInfo[] = [
 ];
 
 const Notes = (props: Props): JSX.Element => {
-    const [uni, setUni] = useState("");
-    const [course, setCourse] = useState("");
-    const [subject, setSubject] = useState("");
-    const [search, setSearch] = useState("");
-    const [uniList, setUniList] = useState<string[]>([]);
-    const [courseList, setCourseList] = useState<string[]>([]);
-    const [subjectList, setSubjectList] = useState<string[]>([]);
+	const [uni, setUni] = useState("");
+	const [course, setCourse] = useState("");
+	const [subject, setSubject] = useState("");
+	const [search, setSearch] = useState("");
+	const [uniList, setUniList] = useState<string[]>([]);
+	const [courseList, setCourseList] = useState<string[]>([]);
+	const [subjectList, setSubjectList] = useState<string[]>([]);
 
 
-    const getUnis = () => {
-        fetch('http://10.200.2.96/get_unis', {
-            method: 'GET'
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setUniList(data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
+	const getUnis = () => {
+		fetch(`http://${config.ip}/get_unis`, {
+			method: 'GET'
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setUniList(data);
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+	}
 
-    const getCourses = () => {
-        fetch("http://10.200.2.96/get_courses?" + new URLSearchParams({
-            uni: uni
-        }), {
-            method: 'GET'
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setCourseList(data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
+	const getCourses = () => {
+		fetch(`http://${config.ip}/get_courses?` + new URLSearchParams({
+			uni: uni
+		}), {
+			method: 'GET'
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setCourseList(data);
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+	}
 
-    const getSubjects = () => {
-        fetch("http://10.200.2.96/get_subjects?", {
-            method: 'GET'
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setSubjectList(data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
+	const getSubjects = () => {
+		fetch(`http://${config.ip}/get_subjects?`, {
+			method: 'GET'
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				setSubjectList(data);
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+	}
 
-    useEffect(getUnis, [])
-    useEffect(getCourses, [uni])
-    useEffect(getSubjects, [])
+	useEffect(getUnis, [])
+	useEffect(getCourses, [uni])
+	useEffect(getSubjects, [])
 
     return (
         <div id="notes">
