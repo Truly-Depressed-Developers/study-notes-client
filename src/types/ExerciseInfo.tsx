@@ -1,10 +1,12 @@
 export type ExerciseInfo = {
-	id: number,
-	title: string,
-	university: string,
-	degree_course: string,
-	timestamp: string,
-	upvotes: number,
-	username: string,
-	subject: string
+    id: number,
+    username: string,
+    university: string,
+    degree_course: string,
+    subject: string,
+    title: string,
+    content: string,
+    points: number,
+    exercise_set: string,
+    timestamp: string,
 }

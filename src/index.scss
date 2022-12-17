@@ -12,3 +12,11 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:hover {
+    text-decoration: inherit;
+    color: inherit;
+}
