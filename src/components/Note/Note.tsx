@@ -1,9 +1,10 @@
 import "./Note.scss";
 
 import { NoteInfo } from "../../types/NoteInfo";
-import { Card, CardContent, Typography, ButtonBase } from "@mui/material";
+import { Card, Typography, ButtonBase } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { dateToHumanReadable } from "../../helpers/dateFormat";
 
 type Props = NoteInfo;
 
@@ -19,12 +20,20 @@ const Note = (props: Props): JSX.Element => {
             className="note"
             onClick={() => onNoteClick()}
         >
-            <Card>
-                <CardContent>
-                    <Typography>{new Date(props.dateAdded).toDateString()}</Typography>
-                    <Typography>{props.title}</Typography>
-                    <Typography>{props.university} - {props.degreeCourse}</Typography>
-                </CardContent>
+            <Card className="note-content">
+                <div>
+                    <Typography component="div">
+                        {dateToHumanReadable(new Date(props.dateAdded))},
+                        &nbsp;
+                        Kategoria,
+                        &nbsp;
+                        {props.university} - {props.degreeCourse}
+                    </Typography>
+                </div>
+                <div>
+                    <Typography variant="h4" component="div">{props.upvotes}</Typography>
+                    <Typography variant="h4">{props.title}</Typography>
+                </div>
             </Card>
         </ButtonBase>
     );
