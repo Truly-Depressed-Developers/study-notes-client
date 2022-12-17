@@ -1,26 +1,33 @@
 @import "../../variables";
 
 #login {
-	box-shadow: 2px 2px 2px 2px lightgray;
-	width: $login_height;
-	height: $login_height;
+	width: 100%;
+	height: calc(100vh - $header_height);
 	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
-	margin-top: -$login_height /2;
-	padding: 100px;
 
-	* {
-		cursor: pointer;
+	#smol-login {
+		box-shadow: 2px 2px 2px 2px lightgray;
+		width: $login_height;
+		height: $login_height;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		margin-top: -$login_height /2;
+		padding: 100px;
+
+		* {
+			cursor: pointer;
+		}
+
+		button {
+			margin-top: 15px;
+		}
+
+		.error-message {
+			margin-top: 10px;
+		}
 	}
-
-	button {
-		margin-top: 15px;
-	}
-
-	.error-message {
-		margin-top: 10px;
-	}
-
 }
