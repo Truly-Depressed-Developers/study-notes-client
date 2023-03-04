@@ -1,6 +1,6 @@
 # Study Notes - client
 
-This repository only contains the client's code. For the main repository, see [Truly-Depressed-Developers/study-notes](https://github.com/Truly-Depressed-Developers/study-notes)
+This repository only contains the client's code. For the main repository, see [Truly-Depressed-Developers/study-notes](https://github.com/Truly-Depressed-Developers/study-notes) 
 
 ## Tech Stack
 
