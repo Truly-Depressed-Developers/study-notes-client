@@ -1,15 +1,6 @@
+# Study Notes - client
 
-# Study Notes Client
-
-Client for an app created at [SheepYourHack](https://sheepyourhack.com/) Hackathon (4th Edition; 2022)
-
-This repository is only for client. See the full list of repositories at [Truly-Depressed-Developers/study-notes](https://github.com/Truly-Depressed-Developers/study-notes)
-
-## Features
-
-- Registration and Login
-- Browsing Notes and Questions with filters
-- Submitting own Notes
+This repository only contains the client's code. For the main repository, see [Truly-Depressed-Developers/study-notes](https://github.com/Truly-Depressed-Developers/study-notes)
 
 ## Tech Stack
 
